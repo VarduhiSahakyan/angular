@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import {ProductListComponent} from "./products/product-list.component";
 // identify the class as an Angular module by attaching
 // the @Ngmodule detector and passing metadata defining
 // the details af this Angular module. the properties
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   // declarations array define which of components belong
   // to this module
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductListComponent
   ],
   // imports array define the external modules that want
   // to have available to all of the components that belong
