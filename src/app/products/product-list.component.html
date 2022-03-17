@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-   {{pageTitle}}
+    {{pageTitle}}
   </div>
 
   <div class="card-body">
@@ -8,7 +8,7 @@
       <div class="col-md-2">Filter by:</div>
       <div class="col-md-4">
         <input type="text"
-        [(ngModel)]="listFilter"/>
+               [(ngModel)]="listFilter"/>
       </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
         <tr>
           <th>
             <button class="btn btn-primary"
-            (click)="toggleImage()">
+                    (click)="toggleImage()">
               {{showImage ? 'Hide ' : 'Show '}} Image
             </button>
           </th>
@@ -38,15 +38,15 @@
         <tr *ngFor="let product of products">
           <td>
             <img *ngIf="showImage"
-              [src]="product.imageUrl"
+                 [src]="product.imageUrl"
                  [title]="product.productName"
                  [style.widht.px]="imageWidth"
                  [style.margin.px]="imageMargin">
             {{product.productName}}
           </td>
-          <td>{{product.productCode}}</td>
+          <td>{{product.productCode | lowercase}}</td>
           <td>{{product.releaseDate}}</td>
-          <td>{{product.price}}</td>
+          <td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td>
           <td>{{product.starRating}}</td>
         </tr>
 
