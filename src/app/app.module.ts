@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 import {ProductListComponent} from "./products/product-list.component";
 // identify the class as an Angular module by attaching
@@ -19,7 +19,8 @@ import {ProductListComponent} from "./products/product-list.component";
   // to this angular  module. external modules could be
   // provided by angular
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
 
   // bootstrap array defines the startup component of the app

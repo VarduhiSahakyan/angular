@@ -6,6 +6,10 @@ import {Component} from "@angular/core";
 })
 export class ProductListComponent {
   pageTitle: string ='Product List';
+  imageWidth = 50;
+  imageMargin = 2;
+  showImage: boolean = false;
+  listFilter: string ='cart';
   products: any[] = [
     {
       "productId": 2,
@@ -16,6 +20,16 @@ export class ProductListComponent {
       "price": 32.99,
       "starRating": 4.2,
       "imageUrl": "asserts/images/garden_cart.png"
+    },
+    {
+      "productId": 8,
+      "productName": "Saw",
+      "productCode": "TBX-0022",
+      "releaseDate": "May 15, 2021",
+      "description": "15-inch steel blade hand saw",
+      "price": 11.55,
+      "starRating": 3.7,
+      "imageUrl": "assets/images/saw.png"
     },
     {
       "productId": 5,
@@ -38,5 +52,9 @@ export class ProductListComponent {
       "imageUrl": "assets/images/xbox-controller.png"
     }
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 
 }
