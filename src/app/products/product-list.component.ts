@@ -1,8 +1,10 @@
 import {Component} from "@angular/core";
+import {IProduct} from "./product";
 
 @Component({
   selector: 'pm-products',
-  templateUrl: './product-list.component.html'
+  templateUrl: './product-list.component.html',
+  styleUrls:["./product-list.component.css"]
 })
 export class ProductListComponent {
   pageTitle: string = 'Product List';
@@ -10,14 +12,14 @@ export class ProductListComponent {
   imageMargin = 2;
   showImage: boolean = false;
   listFilter: string = 'cart';
-  products: any[] = [
+  products: IProduct[] = [
     {
       "productId": 2,
       "productName": "Garden Cart",
       "productCode": "GDN-0023",
       "releaseDate": "March 15 , 2022",
       "description": "15 gallon capacity rolling garden cart",
-      "price": 32.99,
+      "price": 32.9944,
       "starRating": 4.2,
       "imageUrl": "asserts/images/garden_cart.png"
     },
@@ -27,7 +29,7 @@ export class ProductListComponent {
       "productCode": "TBX-0022",
       "releaseDate": "May 15, 2021",
       "description": "15-inch steel blade hand saw",
-      "price": 11.55,
+      "price": 11.5533,
       "starRating": 3.7,
       "imageUrl": "assets/images/saw.png"
     },
@@ -37,7 +39,7 @@ export class ProductListComponent {
       "productCode": "KDN-0073",
       "releaseDate": "May 5 , 2021",
       "description": "Curved claw steel hammer",
-      "price": 9.99,
+      "price": 9.995,
       "starRating": 4.8,
       "imageUrl": "asserts/images/hammer.png"
     },
