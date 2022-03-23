@@ -9,7 +9,7 @@ import {IProduct} from "./product";
 export class ProductListComponent implements OnInit{
 
   pageTitle: string = 'Product List';
-  imageWidth = 50;
+  imageWidth = 5;
   imageMargin = 2;
   showImage: boolean = false;
   private _listFilter: string = '';
@@ -21,17 +21,40 @@ export class ProductListComponent implements OnInit{
   set listFilter(value: string){
     this._listFilter =  value;
     console.log("In setter" , value);
+    this.filteredProducts = this.performFilter(value);
   }
+
+  filteredProducts: IProduct[] = [];
   products: IProduct[] = [
+    {
+      "productId": 1,
+      "productName": "Leaf Rake",
+      "productCode": "GDN-0011",
+      "releaseDate": "March 19, 2021",
+      "description": "Leaf rake with 48-inch wooden handle.",
+      "price": 19.95,
+      "starRating": 3.2,
+      "imageUrl": "assets/images/leaf_rake.png"
+    },
     {
       "productId": 2,
       "productName": "Garden Cart",
       "productCode": "GDN-0023",
-      "releaseDate": "March 15 , 2022",
+      "releaseDate": "March 18, 2021",
       "description": "15 gallon capacity rolling garden cart",
-      "price": 32.9944,
+      "price": 32.99,
       "starRating": 4.2,
-      "imageUrl": "asserts/images/garden_cart.png"
+      "imageUrl": "assets/images/garden_cart.png"
+    },
+    {
+      "productId": 5,
+      "productName": "Hammer",
+      "productCode": "TBX-0048",
+      "releaseDate": "May 21, 2021",
+      "description": "Curved claw steel hammer",
+      "price": 8.9,
+      "starRating": 4.8,
+      "imageUrl": "assets/images/hammer.png"
     },
     {
       "productId": 8,
@@ -39,19 +62,9 @@ export class ProductListComponent implements OnInit{
       "productCode": "TBX-0022",
       "releaseDate": "May 15, 2021",
       "description": "15-inch steel blade hand saw",
-      "price": 11.5533,
+      "price": 11.55,
       "starRating": 3.7,
       "imageUrl": "assets/images/saw.png"
-    },
-    {
-      "productId": 5,
-      "productName": "Hummer",
-      "productCode": "KDN-0073",
-      "releaseDate": "May 5 , 2021",
-      "description": "Curved claw steel hammer",
-      "price": 9.995,
-      "starRating": 4.8,
-      "imageUrl": "asserts/images/hammer.png"
     },
     {
       "productId": 10,
@@ -65,6 +78,11 @@ export class ProductListComponent implements OnInit{
     }
   ];
 
+  performFilter(filterBy: string): IProduct[]{
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) =>
+    product.productName.toLocaleLowerCase().includes(filterBy));
+  }
   toggleImage(): void {
     this.showImage = !this.showImage;
   }

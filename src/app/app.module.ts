@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 import {ProductListComponent} from "./products/product-list.component";
 import {ConvertToSpacePipe} from "./shared/convert-to-space.pipe";
+import {StarComponent} from "./shared/star.component";
 // identify the class as an Angular module by attaching
 // the @Ngmodule detector and passing metadata defining
 // the details af this Angular module. the properties
@@ -14,7 +15,8 @@ import {ConvertToSpacePipe} from "./shared/convert-to-space.pipe";
   declarations: [
     AppComponent,
     ProductListComponent,
-    ConvertToSpacePipe
+    ConvertToSpacePipe,
+    StarComponent
   ],
   // imports array define the external modules that want
   // to have available to all of the components that belong
