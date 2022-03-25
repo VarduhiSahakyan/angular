@@ -1,19 +1,22 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {IProduct} from "./product";
 import {ProductService} from "./product.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls:["./product-list.component.css"]
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit, OnDestroy{
 
   pageTitle: string = 'Product List';
   imageWidth = 5;
   imageMargin = 2;
   showImage: boolean = false;
+  errorMessage: string = '';
   private _listFilter: string = '';
+  sub!: Subscription;
 
   get listFilter(): string {
     return  this._listFilter;
@@ -39,10 +42,23 @@ export class ProductListComponent implements OnInit{
     this.showImage = !this.showImage;
   }
 
+  // 1. angular first initialize the component and executes the ngOnInit()
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    this.filteredProducts = this.products;
+    // 2. call the getProduct() of the productService 3. it returns an observable
+    // of IProduct[] 4. subscribe to that observable and the http get request is submitted
+    // this is the asynchronous operation
+    this.sub =
+    this.productService.getProducts().subscribe({
+      next: products => {this.products = products;
+        // 5. setting filteredProducts
+        this.filteredProducts = this.products;},
+      error: err => this.errorMessage = err
+    });
     this._listFilter = "";
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   onRatingClicked(message: string): void {
