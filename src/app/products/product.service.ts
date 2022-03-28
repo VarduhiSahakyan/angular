@@ -34,7 +34,7 @@ export class ProductService {
           errormessage = `An error occurred: ${err.error.message}`;
         } else {
           // The backend returned an unsuccessful response code.
-          // The response bady may contain clues as to what went wrong
+          // The response body may contain clues as to what went wrong
           errormessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
         }
         console.error(errormessage);

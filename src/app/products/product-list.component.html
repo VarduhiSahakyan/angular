@@ -43,7 +43,18 @@
                  [style.widht.px]="imageWidth"
                  [style.margin.px]="imageMargin">
           </td>
-          <td>{{product.productName}}</td>
+          <!-- get products name as a link by <a>...</a>
+          add the routerLink directive to the anchor tag and
+          set up the link parameter's array"['/...','...']"
+          in the array we define thr path of the route to activate in the
+          first element and pass the parameter value in the second element
+          param is the product Id
+          -->
+          <td>
+            <a [routerLink]="['/products',product.productId]">
+              {{product.productName}}
+            </a>
+          </td>
           <td>{{product.productCode | lowercase | convertToSpace: "-"}}</td>
           <td>{{product.releaseDate}}</td>
           <td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td>
